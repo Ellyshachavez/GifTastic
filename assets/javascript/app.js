@@ -29,7 +29,7 @@ $.ajax({
         var id = gif.id
         var stillUrl = gif.images.fixed_height_still.url
         var gifUrl = gif.images.fixed_height.url
-        $("#display-gifs").append('<div class="img"> <img id="' + id + '" src="' + stillUrl + '"> <p>' + gif.rating.toUpperCase() + '</p></div>')
+        $("#display-gifs").append('<div class="card" style="width: 20rem;"> <img id="' + id + '" src="' + stillUrl + '"> <p>' + gif.rating.toUpperCase() + '</p></div>')
 
         $("#" + id).click(function () {
         if ($("#" + id).attr('src') === stillUrl) {
@@ -67,7 +67,7 @@ $.ajax({
     event.preventDefault();
     // This line grabs the input from the textbox
     var mood = $("#mood-input").val().trim();
-    moods.push(mood);
+    topics.push(mood);
 
     renderButtons();
 
