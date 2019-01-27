@@ -1,3 +1,19 @@
 #style {
     background-color: #584B53;
 }
+
+button,
+div,
+form,
+input {
+  margin: 10px;
+}
+
+.button-style {
+    border-color: #D6E3F8;
+    color: #9D5C63;
+}
+
+#nav-text {
+    color: #E4BB97;
+}

@@ -14,21 +14,32 @@ console.log("connected!")
 
 var topics = ["what did you say", "sleepy", "coffee", "happy", "waiting","tired", "not listening", "cheering", "high five", "banging head against wall", "breaking computer", "laughing", "pot lucks", "waiting for the weekend"];
 
-var queryURL = "https://api.giphy.com/v1/gifs/" + topics[0] + "?api_key=9Q4mfcfRZTFzuU5a61bNWA0VWivOtBGr";
+function showGIF() {
+
+var moods = $(this).attr("data-name");
+var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=9Q4mfcfRZTFzuU5a61bNWA0VWivOtBGr&q=" + moods + "&limit=10&rating=r";
+ console.log(moods);
 
 
 $.ajax({
   url: queryURL,
   method: "GET"
-}).then(function(response) {
-  console.log(response);
-});
+}).done(function(response) {
+    response.data.forEach(function (gif) {
+        var id = gif.id
+        var stillUrl = gif.images.fixed_height_still.url
+        var gifUrl = gif.images.fixed_height.url
+        $("#display-gifs").append('<div class="img"> <img id="' + id + '" src="' + stillUrl + '"> <p>' + gif.rating.toUpperCase() + '</p></div>')
 
-
-function showGIF() {
-    var moods = $(this).attr("data-name");
-console.log(moods);
-  }
+        $("#" + id).click(function () {
+        if ($("#" + id).attr('src') === stillUrl) {
+        $("#" + id).attr('src', gifUrl)
+        } else {
+        $("#" + id).attr('src', stillUrl)
+        }
+    })
+}) 
+})}
 
   // Function for displaying GIF data
   function renderButtons() {
@@ -41,9 +52,9 @@ console.log(moods);
       var b = $("<button>");
       // Adding a class of button-style to button
       b.addClass("button-style");
-      // Adding a data-attribute
       b.attr("data-name", topics[i]);
-      // Providing the initial button text
+      b.addClass("btn");
+      b.attr('type', 'button')
       b.text(topics[i]);
       // Adding the button to the HTML
       $("#buttons-view").append(b);
