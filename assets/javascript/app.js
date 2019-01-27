@@ -29,7 +29,7 @@ $.ajax({
         var id = gif.id
         var stillUrl = gif.images.fixed_height_still.url
         var gifUrl = gif.images.fixed_height.url
-        $("#display-gifs").prepend('<div class="card" style="width: 20rem;"> <img id="' + id + '" src="' + stillUrl + '"> <p>' + gif.rating.toUpperCase() + '</p></div>')
+        $("#display-gifs").prepend('<div class="card" style="width: 20rem; float:left"> <img id="' + id + '" src="' + stillUrl + '"> <p>' + gif.rating.toUpperCase() + '</p></div>')
 
         $("#" + id).click(function () {
         if ($("#" + id).attr('src') === stillUrl) {
