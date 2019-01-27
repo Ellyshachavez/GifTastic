@@ -17,3 +17,9 @@ input {
 #nav-text {
     color: #E4BB97;
 }
+
+p {
+    color: #9D5C63;
+    font-weight: bold;
+    text-align: center;
+}

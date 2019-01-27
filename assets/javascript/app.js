@@ -12,7 +12,7 @@ console.log("connected!")
 //use search field to input value that add to topics array
 //make function call that takes each topic in the array and remakes the buttons on the page 
 
-var topics = ["what did you say", "sleepy", "coffee", "happy", "waiting","tired", "not listening", "cheering", "high five", "banging head against wall", "breaking computer", "laughing", "pot lucks", "waiting for the weekend"];
+var topics = ["monday", "what did you say", "sleepy", "coffee", "happy", "waiting","tired", "not listening", "cheering", "high five", "banging head against wall", "breaking computer", "laughing", "hungry", "waiting for the weekend", "fridays"];
 
 function showGIF() {
 
@@ -29,7 +29,7 @@ $.ajax({
         var id = gif.id
         var stillUrl = gif.images.fixed_height_still.url
         var gifUrl = gif.images.fixed_height.url
-        $("#display-gifs").prepend('<div class="card" style="width: 20rem; float:left"> <img id="' + id + '" src="' + stillUrl + '"> <p>' + gif.rating.toUpperCase() + '</p></div>')
+        $("#display-gifs").prepend('<div class="card" style="width: 20rem; float:left"> <img id="' + id + '" src="' + stillUrl + '"> <p>' + 'Rated: ' + gif.rating.toUpperCase() + '</p></div>')
 
         $("#" + id).click(function () {
         if ($("#" + id).attr('src') === stillUrl) {
